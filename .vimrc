@@ -12,6 +12,7 @@ syntax enable
 syntax on
 set title
 set nu
+set rnu
 set scrolloff=5
 set cursorline
 set clipboard=unnamedplus
@@ -33,7 +34,7 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-set shell=/usr/bin/fish
+set shell=/bin/bash
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -85,6 +86,8 @@ Plug 'neoclide/coc.nvim', {'for':['zig','cmake','rust',
      \'python', 'dart', 'javascript', 'vim'], 'branch': 'release'}
 Plug 'rhysd/vim-clang-format', {'for' : ['c', 'cpp']}
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 "End Pluggin Section
@@ -108,6 +111,7 @@ let g:ale_fix_on_save = 1
 "VIM Airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'dracula'
+let g:airline#extensions#tabline#enabled = 1
 
 "NERD Tree Setting
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -123,12 +127,17 @@ let g:floaterm_keymap_toggle = '<Leader>t'
 
 "PRETTIER Setting
 let g:prettier#quickfix_enabled = 0
-autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
 
 "NEOFORMAT Setting
 autocmd BufWritePre *.js,*.vue,*.html,*.json Neoformat prettier
-"End Pluggin Settings Section
 
+"ULTISNIPS Settings
+let g:UltiSnipsExpandTrigger="<tab>"
+" list all snippets for current filetype
+let g:UltiSnipsListSnippets="<c-l>"
+
+
+"End Pluggin Settings Section
 
 "Start Set Colorscheme Section
 colorscheme palenight
